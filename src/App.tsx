@@ -64,7 +64,6 @@ function App () {
   }
   const handleSorting = (sort: SortBy) => {
     setSorting(sort)
-    console.log(sort)
   }
   return (
     <>
