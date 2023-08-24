@@ -1,20 +1,21 @@
-import { type User } from '../types'
+import { SortBy, type User } from '../types.d'
 
 interface Props {
   users: User[]
   colorRows: boolean
   deleteRow: (email: string) => void
+  changeSorting: (sort: SortBy) => void
 }
 
-export const UsersList = ({ users, colorRows, deleteRow }: Props) => {
+export const UsersList = ({ users, colorRows, deleteRow, changeSorting }: Props) => {
   return (
     <table>
         <thead>
           <tr>
             <th>Foto</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>País</th>
+            <th onClick={() => { changeSorting(SortBy.FIRST) }}>Nombre</th>
+            <th onClick={() => { changeSorting(SortBy.LAST) }}>Apellido</th>
+            <th onClick={() => { changeSorting(SortBy.COUNTRY) }}>País</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -26,7 +27,7 @@ export const UsersList = ({ users, colorRows, deleteRow }: Props) => {
                 <img src={user.picture.thumbnail}/>
                 </td>
                 <td>{user.name.first}</td>
-                <td>{user.name.first}</td>
+                <td>{user.name.last}</td>
                 <td>{user.location.country}</td>
                 <td>
                   <button onClick={() => { deleteRow(user.email) }}>Borrar</button>

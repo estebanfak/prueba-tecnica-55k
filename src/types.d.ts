@@ -87,7 +87,6 @@ export enum SortBy {
   FIRST = 'first',
   LAST = 'last',
   COUNTRY = 'country'
-
 }
 
 export interface Picture {
